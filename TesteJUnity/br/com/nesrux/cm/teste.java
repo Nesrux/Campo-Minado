@@ -8,7 +8,15 @@ class teste {
 
 	@Test
 	void test() {
-		fail("Not yet implemented");
+		int a = 1+1;
+		
+		assertEquals(2 , a);
 	}
+	@Test
+	void testarseigualAtres() {
+		int x = 2 +10 -9;
+		assertEquals(3, x);
+	}
+
 
 }
