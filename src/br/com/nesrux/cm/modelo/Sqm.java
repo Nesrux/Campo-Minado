@@ -15,12 +15,12 @@ public class Sqm {
 	// Com sigo mesmo
 	private List<Sqm> vizinhos = new ArrayList<>();
 
-	Sqm(int linha, int coluna) {
+	public Sqm(int linha, int coluna) {
 		this.coluna = coluna;
 		this.linha = linha;
 	}
 
-	boolean addVizinho(Sqm vizinho) {
+	public boolean addVizinho(Sqm vizinho) {
 		boolean linhaDiferente = linha != vizinho.linha;
 		boolean colunaDiferente = coluna != vizinho.coluna;
 		boolean diagonal = linhaDiferente && colunaDiferente;
