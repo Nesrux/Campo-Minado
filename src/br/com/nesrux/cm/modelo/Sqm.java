@@ -3,6 +3,8 @@ package br.com.nesrux.cm.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.nesrux.cm.excecao.ExplosaoException;
+
 public class Sqm {
 	private final int linha;
 	private final int coluna;
@@ -35,9 +37,29 @@ public class Sqm {
 		} else if (deltaGeral == 2 && diagonal) {
 			vizinhos.add(vizinho);
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}
 
+	void alternarMarcacao() {
+		if (!aberto) {
+			marcado = !marcado;
+		}
+	}
+
+	boolean abrir() {
+		if(!aberto && !marcado) {
+			aberto = true;
+			
+			if(minado) {
+				throw new ExplosaoException();
+			}
+				
+		}
+		
+		return false;
+	}
+
 }
+
