@@ -58,10 +58,11 @@ public class Sqm {
 			if (vizinhancaSegura()) {
 				vizinhos.forEach(v -> v.abrir());
 			}
-
+			return true;
+		}else {
+			return false;
 		}
 
-		return false;
 	}
 
 	boolean vizinhancaSegura() {
