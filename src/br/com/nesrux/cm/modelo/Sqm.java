@@ -15,7 +15,7 @@ public class Sqm {
 
 	// Auto relacionamento, um relacionamento de 1 para n
 	// Com sigo mesmo
-	private List<Sqm> vizinhos = new ArrayList<>();
+	public List<Sqm> vizinhos = new ArrayList<>();
 
 	public Sqm(int linha, int coluna) {
 		this.coluna = coluna;
@@ -42,13 +42,13 @@ public class Sqm {
 		}
 	}
 
-	void alternarMarcacao() {
+	public void alternarMarcacao() {
 		if (!aberto) {
 			marcado = !marcado;
 		}
 	}
 
-	boolean abrir() {
+	public boolean abrir() {
 		if (!aberto && !marcado) {
 			aberto = true;
 
@@ -59,13 +59,16 @@ public class Sqm {
 				vizinhos.forEach(v -> v.abrir());
 			}
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 
 	}
 
-	boolean vizinhancaSegura() {
+	public boolean vizinhancaSegura() {
 		return vizinhos.stream().noneMatch(v -> v.minado);
+	}
+	public boolean isMarcado() {
+		return marcado;
 	}
 }
