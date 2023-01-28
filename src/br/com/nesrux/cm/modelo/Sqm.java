@@ -65,10 +65,23 @@ public class Sqm {
 
 	}
 
+ public	void minar() {
+		if (!minado) {
+			minado = true;
+		}
+	}
+
 	public boolean vizinhancaSegura() {
 		return vizinhos.stream().noneMatch(v -> v.minado);
 	}
+
 	public boolean isMarcado() {
 		return marcado;
+	}
+	public boolean isAberto() {
+		return aberto;
+	}
+	public boolean isFechado() {
+		return !isAberto();
 	}
 }
