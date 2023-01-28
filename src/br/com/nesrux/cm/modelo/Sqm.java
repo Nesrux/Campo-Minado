@@ -17,11 +17,34 @@ public class Sqm {
 	// Com sigo mesmo
 	public List<Sqm> vizinhos = new ArrayList<>();
 
+	//Construtor
 	public Sqm(int linha, int coluna) {
 		this.coluna = coluna;
 		this.linha = linha;
 	}
+	
+	//Getters and setters
+	public boolean isMarcado() {
+		return marcado;
+	}
 
+	public boolean isAberto() {
+		return aberto;
+	}
+
+	public boolean isFechado() {
+		return !isAberto();
+	}
+
+	public int getLinha() {
+		return linha;
+	}
+
+	public  int getColuna() {
+		return coluna;
+	}
+
+	//Método que adiciona vizinhos dentro do jogo
 	public boolean addVizinho(Sqm vizinho) {
 		boolean linhaDiferente = linha != vizinho.linha;
 		boolean colunaDiferente = coluna != vizinho.coluna;
@@ -41,13 +64,13 @@ public class Sqm {
 			return false;
 		}
 	}
-
+	//Método que troca a marcação dos lugares que nao foram abertos
 	public void alternarMarcacao() {
 		if (!aberto) {
 			marcado = !marcado;
 		}
 	}
-
+	//Método que abre um SQM dentro do jogo
 	public boolean abrir() {
 		if (!aberto && !marcado) {
 			aberto = true;
@@ -64,24 +87,15 @@ public class Sqm {
 		}
 
 	}
-
- public	void minar() {
+	//Método que coloca minas dentro dos SQM
+	public void minar() {
 		if (!minado) {
 			minado = true;
 		}
 	}
-
+	//Método que abre os Sqm's próximos até encontrar lugares possiveis e minados
 	public boolean vizinhancaSegura() {
 		return vizinhos.stream().noneMatch(v -> v.minado);
 	}
-
-	public boolean isMarcado() {
-		return marcado;
-	}
-	public boolean isAberto() {
-		return aberto;
-	}
-	public boolean isFechado() {
-		return !isAberto();
-	}
 }
+	
