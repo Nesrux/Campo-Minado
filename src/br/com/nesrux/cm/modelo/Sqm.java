@@ -49,17 +49,22 @@ public class Sqm {
 	}
 
 	boolean abrir() {
-		if(!aberto && !marcado) {
+		if (!aberto && !marcado) {
 			aberto = true;
-			
-			if(minado) {
+
+			if (minado) {
 				throw new ExplosaoException();
 			}
-				
+			if (vizinhancaSegura()) {
+				vizinhos.forEach(v -> v.abrir());
+			}
+
 		}
-		
+
 		return false;
 	}
 
+	boolean vizinhancaSegura() {
+		return vizinhos.stream().noneMatch(v -> v.minado);
+	}
 }
-
