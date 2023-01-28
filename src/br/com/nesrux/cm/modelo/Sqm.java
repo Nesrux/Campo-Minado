@@ -17,13 +17,13 @@ public class Sqm {
 	// Com sigo mesmo
 	public List<Sqm> vizinhos = new ArrayList<>();
 
-	//Construtor
+	// Construtor
 	public Sqm(int linha, int coluna) {
 		this.coluna = coluna;
 		this.linha = linha;
 	}
-	
-	//Getters and setters
+
+	// Getters and setters
 	public boolean isMarcado() {
 		return marcado;
 	}
@@ -40,11 +40,11 @@ public class Sqm {
 		return linha;
 	}
 
-	public  int getColuna() {
+	public int getColuna() {
 		return coluna;
 	}
 
-	//Método que adiciona vizinhos dentro do jogo
+	// Método que adiciona vizinhos dentro do jogo
 	public boolean addVizinho(Sqm vizinho) {
 		boolean linhaDiferente = linha != vizinho.linha;
 		boolean colunaDiferente = coluna != vizinho.coluna;
@@ -64,13 +64,15 @@ public class Sqm {
 			return false;
 		}
 	}
-	//Método que troca a marcação dos lugares que nao foram abertos
+
+	// Método que troca a marcação dos lugares que nao foram abertos
 	public void alternarMarcacao() {
 		if (!aberto) {
 			marcado = !marcado;
 		}
 	}
-	//Método que abre um SQM dentro do jogo
+
+	// Método que abre um SQM dentro do jogo
 	public boolean abrir() {
 		if (!aberto && !marcado) {
 			aberto = true;
@@ -87,15 +89,46 @@ public class Sqm {
 		}
 
 	}
-	//Método que coloca minas dentro dos SQM
+
+	// Método que coloca minas dentro dos SQM
 	public void minar() {
 		if (!minado) {
 			minado = true;
 		}
 	}
-	//Método que abre os Sqm's próximos até encontrar lugares possiveis e minados
+
+	// Método que abre os Sqm's próximos até encontrar lugares possiveis e minados
 	public boolean vizinhancaSegura() {
 		return vizinhos.stream().noneMatch(v -> v.minado);
 	}
+
+	boolean objetivoAlcancado() {
+		boolean desvendado = !minado && aberto;
+		boolean protegido = minado && marcado;
+		return desvendado || protegido;
+	}
+
+	long minasNaVizinhanca() {
+		return vizinhos.stream().filter(v -> v.minado).count();
+	}
+
+	void reiniciar() {
+		aberto = false;
+		minado = false;
+		marcado = false;
+	}
+
+	public String toString() {
+		if (marcado) {
+			return "x";
+		} else if (aberto && minado) {
+			return "*";
+		} else if (aberto && minasNaVizinhanca() > 0) {
+			return Long.toString(minasNaVizinhanca());
+		} else if (aberto) {
+			return " ";
+		} else {
+			return "?";
+		}
+	}
 }
-	
