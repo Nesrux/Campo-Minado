@@ -28,8 +28,8 @@
   <li>funçoes lambda</li>
   <li>collections</li>
   <li>Tratamentos de Erros</li>
-  <li>paradiga da programação orientada a objetos</li>
-  <li>Paradigmas da programação funcional</li>
+  <li>programação orientada a objetos</li>
+  <li>Programação funcional</li>
 </ol>
 
 
