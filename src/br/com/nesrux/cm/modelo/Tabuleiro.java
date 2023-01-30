@@ -30,7 +30,7 @@ public class Tabuleiro {
 					.ifPresent(c -> c.abrir());
 
 		} catch (ExplosaoException e) {
-			campos.forEach(c-> c.setAberto(true));
+			campos.forEach(c -> c.setAberto(true));
 			throw e;
 		}
 	}
@@ -61,7 +61,7 @@ public class Tabuleiro {
 		long minasArmadas = 0;
 		Predicate<Sqm> minado = c -> c.isMinado();
 		do {
-			
+
 			int aleatorio = (int) (Math.random() * campos.size());
 			campos.get(aleatorio).minar();
 			minasArmadas = campos.stream().filter(minado).count();
@@ -79,14 +79,23 @@ public class Tabuleiro {
 	}
 
 	public String toString() {
-		int i = 0;
+
 		StringBuilder sb = new StringBuilder();
+		sb.append("  ");
+		for (int c = 0; c < colunas; c++) {
+			sb.append(" ");
+			sb.append(c);
+			sb.append(" ");
+
+		}
+		sb.append("\n");
+		int i = 0;
 		for (int l = 0; l < linhas; l++) {
+			sb.append(l);
+			sb.append(" ");
 			for (int c = 0; c < colunas; c++) {
 				sb.append(" ");
-
 				sb.append(campos.get(i));
-
 				sb.append(" ");
 				i++;
 			}
