@@ -43,6 +43,9 @@ public class Sqm {
 	public int getColuna() {
 		return coluna;
 	}
+	public boolean isMinado() {
+		return minado;
+	}
 
 	// Método que adiciona vizinhos dentro do jogo
 	public boolean addVizinho(Sqm vizinho) {
