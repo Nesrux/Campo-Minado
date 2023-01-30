@@ -19,9 +19,8 @@
 <!-- ABOUT THE PROJECT -->
 ## Sobre o Projeto
 </br>
-<p>O projéto é um jogo chamando campo minado, deito em java para bota meus conhecimentos adquiridos em pratica, ele é constituido em 3 pacotes o
-Modelo, onde a logica do campo do jogo é feita, exceção onde as execeptions são feitas, e a visão onde o jogo fica mais gráfico, e por fim o método main, onde o jogo 
- de fato funciona.
+<p>
+  O projeto é um jogo chamando campo minado, deito em java para bota meus conhecimentos adquiridos em prática, ele é constituído em 3 pacotes, o Modelo, onde a lógica do campo do jogo é feita, exceção onde as execeptions são feitas, e a visão onde o jogo fica mais gráfico, e por fim o método main, onde o jogo de fato funciona.
 </p>
 </br>
 <b>Tecnologias e conceitos utilizados</b>
