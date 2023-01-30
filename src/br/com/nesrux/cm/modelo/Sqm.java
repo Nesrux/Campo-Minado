@@ -32,6 +32,10 @@ public class Sqm {
 		return aberto;
 	}
 
+	void setAberto(boolean aberto) {
+		this.aberto = aberto;
+	}
+
 	public boolean isFechado() {
 		return !isAberto();
 	}
@@ -43,6 +47,7 @@ public class Sqm {
 	public int getColuna() {
 		return coluna;
 	}
+
 	public boolean isMinado() {
 		return minado;
 	}
