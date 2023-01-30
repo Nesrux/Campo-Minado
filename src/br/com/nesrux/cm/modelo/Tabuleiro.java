@@ -54,4 +54,12 @@ public class Tabuleiro {
 		return campos.stream().allMatch(c -> c.objetivoAlcancado());
 	}
 
+	public void reiniciar() {
+		campos.stream().forEach(c -> c.reiniciar());
+		sortearMinas();
+	}
+
+	public String toString() {
+	}
+
 }
