@@ -11,15 +11,23 @@ public class Sqm {
 	private boolean minado = false;
 	private boolean marcado = false;
 
-	// Auto relacionamento, um relacionamento de 1 para n
-	// Com sigo mesmo
-	public List<Sqm> vizinhos = new ArrayList<>();
+	private List<Sqm> vizinhos = new ArrayList<>();
+	private List<CampoObservador> observadores = new ArrayList<>();
 
 	// Construtor
 	public Sqm(int linha, int coluna) {
 		this.coluna = coluna;
 		this.linha = linha;
 	}
+
+	public void registrarObservador(CampoObservador observador) {
+		observadores.add(observador);
+	}
+
+	private void notificarObservadores(CampoEvento evento) {
+		observadores.forEach(obs -> obs.eventoOcorreu(this, evento));
+
+	};
 
 	// Getters and setters
 	public boolean isMarcado() {
@@ -75,6 +83,12 @@ public class Sqm {
 	public void alternarMarcacao() {
 		if (!aberto) {
 			marcado = !marcado;
+
+			if (marcado) {
+				notificarObservadores(CampoEvento.MARCAR);
+			} else {
+				notificarObservadores(CampoEvento.DESMACAR);
+			}
 		}
 	}
 
