@@ -3,8 +3,6 @@ package br.com.nesrux.cm.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.nesrux.cm.excecao.ExplosaoException;
-
 public class Sqm {
 	private final int linha;
 	private final int coluna;
@@ -86,7 +84,7 @@ public class Sqm {
 			aberto = true;
 
 			if (minado) {
-				throw new ExplosaoException();
+				// TODO implementar nova versão
 			}
 			if (vizinhancaSegura()) {
 				vizinhos.forEach(v -> v.abrir());
@@ -126,17 +124,4 @@ public class Sqm {
 		marcado = false;
 	}
 
-	public String toString() {
-		if (marcado) {
-			return "x";
-		} else if (aberto && minado) {
-			return "*";
-		} else if (aberto && minasNaVizinhanca() > 0) {
-			return Long.toString(minasNaVizinhanca());
-		} else if (aberto) {
-			return " ";
-		} else {
-			return "?";
-		}
-	}
 }
