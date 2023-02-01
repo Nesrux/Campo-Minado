@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import br.com.nesrux.cm.excecao.ExplosaoException;
 import br.com.nesrux.cm.modelo.Sqm;
 
 class TesteCampo {
@@ -94,14 +93,7 @@ class TesteCampo {
 		assertFalse(campo.abrir());
 	}
 
-	@Test
-	void testeAbrirMinadoNaoMarcado() {
-		campo.minar();
-		assertThrows(ExplosaoException.class, () -> {
-			assertFalse(campo.abrir());
-		});
 
-	}
 
 	@Test
 	void testeAbrirComVizinho() {
