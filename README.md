@@ -1,39 +1,38 @@
 <div id="top"></div>
-<!-- PROJECT LOGO -->
 <br />
-<div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
 
-<h3 align="center">Campo Minado</h3>Cancel changes
+
+<h3 align="center">Campo Minado</h3>
 
   <p align="center">
    Um projeto feito em Java de um jogo do campo minado
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+   <a href="https://github.com/github_username/repo_name">
+    <img src="Img/game.png" alt="Logo" width="250" height="250">
+  </a>
     <br />
-    <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <div align="center">
+  
   </p>
 </div>
 
-
-
-
-
-
 <!-- ABOUT THE PROJECT -->
-## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
-
+## Sobre o Projeto
+</br>
+<p>
+  O projeto é um jogo chamando campo minado, deito em java para bota meus conhecimentos adquiridos em prática, ele é constituído em 3 pacotes, o Modelo, onde a lógica do campo do jogo é feita, exceção onde as execeptions são feitas, e a visão onde o jogo fica mais gráfico, e por fim o método main, onde o jogo de fato funciona.
+</p>
+</br>
+<b>Tecnologias e conceitos utilizados</b>
+<ol>
+  <li>JUnit 5</li>
+  <li>Stream Api</li>
+  <li>funçoes lambda</li>
+  <li>collections</li>
+  <li>Tratamentos de Erros</li>
+  <li>programação orientada a objetos</li>
+  <li>Programação funcional</li>
+</ol>
 
 
 
