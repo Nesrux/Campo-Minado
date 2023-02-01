@@ -40,6 +40,10 @@ public class Sqm {
 
 	void setAberto(boolean aberto) {
 		this.aberto = aberto;
+		
+		if(aberto) {
+			notificarObservadores(CampoEvento.ABRIR);
+		}
 	}
 
 	public boolean isFechado() {
@@ -95,11 +99,13 @@ public class Sqm {
 	// Método que abre um SQM dentro do jogo
 	public boolean abrir() {
 		if (!aberto && !marcado) {
-			aberto = true;
 
 			if (minado) {
-				// TODO implementar nova versão
+				notificarObservadores(CampoEvento.EXPLODIR);
+				return true;
 			}
+			setAberto(true);
+
 			if (vizinhancaSegura()) {
 				vizinhos.forEach(v -> v.abrir());
 			}
