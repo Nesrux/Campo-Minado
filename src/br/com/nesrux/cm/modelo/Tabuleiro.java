@@ -24,6 +24,9 @@ public class Tabuleiro implements CampoObservador {
 		sortearMinas();
 	}
 	
+	public void paraCada(Consumer<Sqm> funcao) {
+		campos.forEach(funcao);
+	}
 	
 
 	public int getLinhas() {
