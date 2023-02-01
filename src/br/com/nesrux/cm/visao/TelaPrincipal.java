@@ -2,9 +2,14 @@ package br.com.nesrux.cm.visao;
 
 import javax.swing.JFrame;
 
+import br.com.nesrux.cm.modelo.Tabuleiro;
+
 @SuppressWarnings("serial")
 public class TelaPrincipal extends JFrame {
 	public TelaPrincipal() {
+		Tabuleiro tabuleiro = new Tabuleiro(16, 30, 50);
+		add(new PainelTabuleiro(tabuleiro));
+		
 		setTitle("Campo Minado");
 		setSize(690, 438);
 		setLocationRelativeTo(null);
