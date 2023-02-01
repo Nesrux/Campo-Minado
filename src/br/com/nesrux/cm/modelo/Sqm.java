@@ -20,15 +20,6 @@ public class Sqm {
 		this.linha = linha;
 	}
 
-	public void registrarObservador(CampoObservador observador) {
-		observadores.add(observador);
-	}
-
-	private void notificarObservadores(CampoEvento evento) {
-		observadores.forEach(obs -> obs.eventoOcorreu(this, evento));
-
-	};
-
 	// Getters and setters
 	public boolean isMarcado() {
 		return marcado;
@@ -36,14 +27,6 @@ public class Sqm {
 
 	public boolean isAberto() {
 		return aberto;
-	}
-
-	void setAberto(boolean aberto) {
-		this.aberto = aberto;
-		
-		if(aberto) {
-			notificarObservadores(CampoEvento.ABRIR);
-		}
 	}
 
 	public boolean isFechado() {
@@ -83,19 +66,6 @@ public class Sqm {
 		}
 	}
 
-	// Método que troca a marcação dos lugares que nao foram abertos
-	public void alternarMarcacao() {
-		if (!aberto) {
-			marcado = !marcado;
-
-			if (marcado) {
-				notificarObservadores(CampoEvento.MARCAR);
-			} else {
-				notificarObservadores(CampoEvento.DESMACAR);
-			}
-		}
-	}
-
 	// Método que abre um SQM dentro do jogo
 	public boolean abrir() {
 		if (!aberto && !marcado) {
@@ -116,10 +86,11 @@ public class Sqm {
 
 	}
 
-	// Método que coloca minas dentro dos SQM
-	public void minar() {
-		if (!minado) {
-			minado = true;
+	void setAberto(boolean aberto) {
+		this.aberto = aberto;
+
+		if (aberto) {
+			notificarObservadores(CampoEvento.ABRIR);
 		}
 	}
 
@@ -138,10 +109,39 @@ public class Sqm {
 		return vizinhos.stream().filter(v -> v.minado).count();
 	}
 
+	public void registrarObservador(CampoObservador observador) {
+		observadores.add(observador);
+	}
+
+	// Método que troca a marcação dos lugares que nao foram abertos
+	public void alternarMarcacao() {
+		if (!aberto) {
+			marcado = !marcado;
+
+			if (marcado) {
+				notificarObservadores(CampoEvento.MARCAR);
+			} else {
+				notificarObservadores(CampoEvento.DESMACAR);
+			}
+		}
+	}
+
+	// Método que coloca minas dentro dos SQM
+	public void minar() {
+		if (!minado) {
+			minado = true;
+		}
+	}
+
 	void reiniciar() {
 		aberto = false;
 		minado = false;
 		marcado = false;
 	}
+
+	private void notificarObservadores(CampoEvento evento) {
+		observadores.forEach(obs -> obs.eventoOcorreu(this, evento));
+
+	};
 
 }

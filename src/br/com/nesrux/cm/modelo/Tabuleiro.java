@@ -2,14 +2,16 @@ package br.com.nesrux.cm.modelo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-public class Tabuleiro {
+public class Tabuleiro implements CampoObservador {
 	private int linhas;
 	private int colunas;
 	private int minas;
 
 	private final List<Sqm> campos = new ArrayList<>();
+	private final List<Consumer<ResultadoDoEvento>> observadores = new ArrayList<>();
 
 	public Tabuleiro(int linhas, int colunas, int minas) {
 		super();
@@ -22,16 +24,21 @@ public class Tabuleiro {
 		sortearMinas();
 	}
 
-	public void abrir(int linha, int coluna) {
-		try {
-			campos.parallelStream().filter(c -> c.getLinha() == linha && c.getColuna() == coluna).findFirst()
-					.ifPresent(c -> c.abrir());
+	public void registrarObservador(Consumer<ResultadoDoEvento> observador) {
+		observadores.add(observador);
+	}
 
-		} catch (Exception e) {
-			// FIXME ajustar a implementação do métdodo abrir
-			campos.forEach(c -> c.setAberto(true));
-			throw e;
-		}
+	public void notificarObservadores(boolean resultado) {
+		observadores.stream().forEach(o -> o.accept(new ResultadoDoEvento(resultado)));
+	}
+
+	public void abrir(int linha, int coluna) {
+		campos.parallelStream().filter(c -> c.getLinha() == linha && c.getColuna() == coluna).findFirst()
+				.ifPresent(c -> c.abrir());
+	}
+
+	private void mostrarMinas() {
+		campos.stream().filter(c -> c.isMinado()).forEach(c -> c.setAberto(true));
 	}
 
 	public void marcar(int linha, int coluna) {
@@ -42,7 +49,9 @@ public class Tabuleiro {
 	private void gerarCampo() {
 		for (int li = 0; li < linhas; li++) {
 			for (int co = 0; co < colunas; co++) {
-				campos.add(new Sqm(li, co));
+				Sqm campo = new Sqm(li, co);
+				campo.registrarObservador(this);
+				campos.add(campo);
 			}
 
 		}
@@ -77,4 +86,14 @@ public class Tabuleiro {
 		sortearMinas();
 	}
 
+	@Override
+	public void eventoOcorreu(Sqm campo, CampoEvento evento) {
+		if (evento == CampoEvento.EXPLODIR) {
+			mostrarMinas();
+			notificarObservadores(false);
+		} else if (objetivoAlcancado()) {
+			notificarObservadores(true);
+		}
+
+	}
 }
