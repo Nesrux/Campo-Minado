@@ -8,7 +8,7 @@
    Um projeto feito em Java de um jogo do campo minado
     <br />
    <a href="https://github.com/github_username/repo_name">
-    <img src="Img/game.png" alt="Logo" width="250" height="250">
+    <img src="Img/game.png" alt="Logo" width="450" height="250">
   </a>
     <br />
     <div align="center">
