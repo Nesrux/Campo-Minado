@@ -2,7 +2,9 @@ package br.com.nesrux.cm.visao;
 
 import java.awt.GridLayout;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import br.com.nesrux.cm.modelo.Tabuleiro;
 
@@ -13,7 +15,16 @@ public class PainelTabuleiro extends JPanel {
 		tabuleiro.paraCada(c -> add(new BotaoCampo(c)));
 
 		tabuleiro.registrarObservador(e -> {
-			//TODO mostrar resultado
+			SwingUtilities.invokeLater(() -> {
+				if (e.isGanhou()) {
+					JOptionPane.showMessageDialog(this, "Você ganhou !");
+				} else {
+					JOptionPane.showMessageDialog(this, "Você perdeu!");
+				}
+				
+				tabuleiro.reiniciar();
+			});
 		});
+
 	}
 }

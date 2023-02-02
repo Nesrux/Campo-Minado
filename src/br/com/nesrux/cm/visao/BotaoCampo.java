@@ -6,6 +6,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 
 import br.com.nesrux.cm.modelo.CampoEvento;
 import br.com.nesrux.cm.modelo.CampoObservador;
@@ -46,6 +47,10 @@ public class BotaoCampo extends JButton implements CampoObservador, MouseListene
 		default:
 			aplicarEstiloPadreao();
 		}
+		SwingUtilities.invokeLater(()->{
+			repaint();
+			validate();
+		});
 	}
 
 	private void aplicarEstiloExplodir() {
@@ -57,6 +62,7 @@ public class BotaoCampo extends JButton implements CampoObservador, MouseListene
 
 	private void aplicarEstiloPadreao() {
 		setBackground(BG_PADRAO);
+		setBorder(BorderFactory.createBevelBorder(0));
 		setText("");
 
 	}

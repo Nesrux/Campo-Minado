@@ -137,6 +137,7 @@ public class Sqm {
 		aberto = false;
 		minado = false;
 		marcado = false;
+		notificarObservadores(CampoEvento.REINICIAR);
 	}
 
 	private void notificarObservadores(CampoEvento evento) {
