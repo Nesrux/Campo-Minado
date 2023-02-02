@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingUtilities;
 
@@ -72,7 +73,6 @@ public class BotaoCampo extends JButton implements CampoObservador, MouseListene
 		setBackground(BG_MARCAR);
 		setForeground(Color.black);
 		setText("M");
-		// setIcon();
 	}
 
 	private void aplicarEstiloAbrir() {
@@ -125,4 +125,7 @@ public class BotaoCampo extends JButton implements CampoObservador, MouseListene
 
 	public void mouseExited(MouseEvent e) {
 	}
+	
+	
+	
 }
