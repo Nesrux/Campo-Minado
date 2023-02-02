@@ -48,13 +48,19 @@ public class BotaoCampo extends JButton implements CampoObservador, MouseListene
 	}
 
 	private void aplicarEstiloExplodir() {
-		// TODO Auto-generated method stub
-
+		setBackground(BG_EXPLODIR);
+		setText("X");
 	}
 
 	private void aplicarEstiloPadreao() {
-		// TODO Auto-generated method stub
+		setBackground(BG_PADRAO);
+		setText("");
 
+	}
+
+	private void aplicarEstiloMarcar() {
+		setBackground(BG_MARCAR);
+		setText("M");
 	}
 
 	private void aplicarEstiloAbrir() {
@@ -79,11 +85,6 @@ public class BotaoCampo extends JButton implements CampoObservador, MouseListene
 		}
 		String valor = !campo.vizinhancaSegura() ? campo.minasNaVizinhanca() + "" : "";
 		setText(valor);
-	}
-
-	private void aplicarEstiloMarcar() {
-		// TODO Auto-generated method stub
-
 	}
 
 	// Interface dos enventos do maouse
