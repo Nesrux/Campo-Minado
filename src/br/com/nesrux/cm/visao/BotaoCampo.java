@@ -48,6 +48,7 @@ public class BotaoCampo extends JButton implements CampoObservador, MouseListene
 	}
 
 	private void aplicarEstiloExplodir() {
+		//TODO implementar incone de bomba
 		setBackground(BG_EXPLODIR);
 		setText("X");
 	}
@@ -59,8 +60,10 @@ public class BotaoCampo extends JButton implements CampoObservador, MouseListene
 	}
 
 	private void aplicarEstiloMarcar() {
+	//TODO implementar incone de bandeira
 		setBackground(BG_MARCAR);
 		setText("M");
+		//setIcon();
 	}
 
 	private void aplicarEstiloAbrir() {
