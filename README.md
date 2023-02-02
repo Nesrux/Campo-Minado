@@ -20,19 +20,10 @@
 ## Sobre o Projeto
 </br>
 <p>
-  O projeto é um jogo chamando campo minado, deito em java para bota meus conhecimentos adquiridos em prática, ele é constituído em 3 pacotes, o Modelo, onde a lógica do campo do jogo é feita, exceção onde as execeptions são feitas, e a visão onde o jogo fica mais gráfico, e por fim o método main, onde o jogo de fato funciona.
+  O projeto consiste em um jogo feito em java usando conhecimentos adquiridos no curso, ele tem 2 partes, a primeira é o jogo funcionando inteiramente pelo terminal do eclipse, e a segunda é uma interface gráfica, utilizando do java javax.swing
 </p>
 </br>
-<b>Tecnologias e conceitos utilizados</b>
-<ol>
-  <li>JUnit 5</li>
-  <li>Stream Api</li>
-  <li>funçoes lambda</li>
-  <li>collections</li>
-  <li>Tratamentos de Erros</li>
-  <li>programação orientada a objetos</li>
-  <li>Programação funcional</li>
-</ol>
+
 
 
 
