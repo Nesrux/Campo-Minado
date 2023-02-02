@@ -105,8 +105,8 @@ public class Sqm {
 		return desvendado || protegido;
 	}
 
-	long minasNaVizinhanca() {
-		return vizinhos.stream().filter(v -> v.minado).count();
+	 public int minasNaVizinhanca() {
+		return (int) vizinhos.stream().filter(v -> v.minado).count();
 	}
 
 	public void registrarObservador(CampoObservador observador) {
